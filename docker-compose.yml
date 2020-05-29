@@ -6,10 +6,6 @@ services:
     working_dir: /usr/src/app
     environment:
       RUST_BACKTRACE: 1
-    ports:
-      - 5001:8000
-    depends_on:
-      - db
     volumes:
       - .:/usr/src/app:cached
       - rust_cargo:/usr/local/cargo/registry
