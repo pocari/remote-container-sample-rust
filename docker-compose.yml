@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./
+    working_dir: /usr/src/app
+    environment:
+      RUST_BACKTRACE: 1
+    ports:
+      - 5001:8000
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app:cached
+      - rust_cargo:/usr/local/cargo/registry
+      - rust_target:/usr/src/app/target
+    command: tail -f /dev/null
+
+volumes:
+  rust_target:
+  rust_cargo:
